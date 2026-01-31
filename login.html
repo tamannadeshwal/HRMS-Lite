@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Internship Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">InternTrack</h2>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="header">
+                    <h1>Welcome Back</h1>
+                    <p>Login to your Internship Management Account</p>
+                </div>
+
+                <form id="loginForm" class="form">
+                    <div class="form-group">
+                        <label for="studentIdLogin">Student ID / Email *</label>
+                        <input 
+                            type="text" 
+                            id="studentIdLogin" 
+                            name="studentIdLogin" 
+                            placeholder="Enter your Student ID or Email"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordLogin">Password *</label>
+                        <input 
+                            type="password" 
+                            id="passwordLogin" 
+                            name="passwordLogin" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <label for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
+                </form>
+
+                <div class="login-options">
+                    <p>Don't have an account?</p>
+                    <a href="registration.html" class="btn-register">Create Account Now</a>
+                </div>
+
+                <div class="user-type-info">
+                    <p class="info-title">Are you Faculty/Admin?</p>
+                    <a href="admin-login.html" class="admin-link">Faculty Login</a>
+                </div>
+            </div>
+
+            <div class="login-info">
+                <h2>Quick Access Features</h2>
+                <ul>
+                    <li>✓ View and manage internship records</li>
+                    <li>✓ Report and track problems</li>
+                    <li>✓ Monitor completion status</li>
+                    <li>✓ Download certificates</li>
+                    <li>✓ Track credit scores</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/validation.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

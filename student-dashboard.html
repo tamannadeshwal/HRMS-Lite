@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Internship Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/student-dashboard.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">InternTrack</h2>
+            <div class="nav-right">
+                <span class="student-name" id="studentName">Student</span>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-wrapper">
+            <div class="welcome-section">
+                <h1>Welcome to Your Dashboard</h1>
+                <p id="welcomeMessage">Manage your internship records and track your progress</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-content">
+                            <h3 id="internshipCount">0</h3>
+                            <p>Internships Completed</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>

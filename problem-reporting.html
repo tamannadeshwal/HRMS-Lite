@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Problem - Internship Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/problem-reporting.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">InternTrack</h2>
+            <a href="student-dashboard.html" class="back-link">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="header">
+                <h1>Report a Problem</h1>
+                <p>Share your internship-related concerns</p>
+            </div>
+
+            <form id="problemForm" class="form" novalidate>
+                <div class="form-section">
+                    <h3>Problem Details</h3>
+
+                    <div class="form-group">
+                        <label for="internshipSelect">Select Internship *</label>
+                        <select id="internshipSelect" name="internshipSelect" required>
+                            <option value="">Choose an internship</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemCategory">Problem Category *</label>
+                        <select id="problemCategory" name="problemCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Salary/Stipend">Salary/Stipend Issues</option>
+                            <option value="Working Conditions">Working Conditions</option>
+                            <option value="Harassment">Harassment/Discrimination</option>
+                            <option value="Work Hours">Excessive Working Hours</option>
+                            <option value="Task Mismatch">Task Mismatch</option>
+                            <option value="Supervisor">Supervisor Issues</option>
+                            <option value="Academic">Academic Related</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemTitle">Problem Title *</label>
+                        <input 
+                            type="text" 
+                            id="problemTitle" 
+                            name="problemTitle" 
+                            placeholder="Brief title of the problem"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemDescription">Detailed Description *</label>
+                        <textarea 
+                            id="problemDescription" 
+                            name="problemDescription" 
+                            rows="5"
+                            placeholder="Describe your problem in detail..."
+                            required
+                        ></textarea>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemDate">When did this occur? *</label>
+                        <input 
+                            type="date" 
+                            id="problemDate" 
+                            name="problemDate" 
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Severity & Impact</h3>
+
+                    <div class="form-group">
+                        <label for="severity">Severity Level *</label>
+                        <select id="severity" name="severity" required>
+                            <option value="">Select Severity</option>
+                            <option value="Low">Low - Minor inconvenience</option>
+                            <option value="Medium">Medium - Affects work quality</option>
+                            <option value="High">High - Serious impact on internship</option>
+                            <option value="Critical">Critical - Need immediate action</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Has this problem been reported before? *</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="reported" value="yes" required>
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="reported" value="no" required>
+                                No
+                            </label>
+                        </div>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group" id="previousReportDiv" style="display: none;">
+                        <label for="previousReportDetails">Previous Report Details</label>
+                        <textarea 
+                            id="previousReportDetails" 
+                            name="previousReportDetails" 
+                            rows="3"
+                            placeholder="When and to whom did you report it?"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+
+                    <div class="form-group">
+                        <label for="witnesses">Witnesses (if any)</label>
+                        <input 
+                            type="text" 
+                            id="witnesses" 
+                            name="witnesses" 
+                            placeholder="Names of people who witnessed this"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="evidence">Supporting Evidence / Document</label>
+                        <input 
+                            type="text" 
+                            id="evidence" 
+                            name="evidence" 
+                            placeholder="E.g., Email proofs, messages, documents"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="anonymousReport" name="anonymousReport">
+                            Submit as Anonymous Report
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                            I confirm the information provided is true and accurate
+                        </label>
+                        <small class="error-text"></small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit Problem Report</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/validation.js"></script>
+    <script src="js/problem-reporting.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Details - Internship Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/internship-details.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">InternTrack</h2>
+            <a href="student-dashboard.html" class="back-link">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="header">
+                <h1>Add Internship Details</h1>
+                <p>Submit your internship information</p>
+            </div>
+
+            <form id="internshipForm" class="form" novalidate>
+                <div class="form-section">
+                    <h3>Company Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="companyName">Company Name *</label>
+                        <input 
+                            type="text" 
+                            id="companyName" 
+                            name="companyName" 
+                            placeholder="e.g., Google, TCS, Infosys"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyCity">City</label>
+                            <input 
+                                type="text" 
+                                id="companyCity" 
+                                name="companyCity" 
+                                placeholder="e.g., Bangalore"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="companyState">State</label>
+                            <input 
+                                type="text" 
+                                id="companyState" 
+                                name="companyState" 
+                                placeholder="e.g., Karnataka"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyType">Company Type *</label>
+                        <select id="companyType" name="companyType" required>
+                            <option value="">Select Type</option>
+                            <option value="IT">IT/Software</option>
+                            <option value="Finance">Finance/Banking</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Research">Research & Development</option>
+                            <option value="Startup">Startup</option>
+                            <option value="Government">Government</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Internship Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="internshipType">Type of Internship *</label>
+                        <select id="internshipType" name="internshipType" required>
+                            <option value="">Select Type</option>
+                            <option value="Technical">Technical</option>
+                            <option value="Research">Research</option>
+                            <option value="Industrial">Industrial</option>
+                            <option value="Core">Core</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">Start Date *</label>
+                            <input 
+                                type="date" 
+                                id="startDate" 
+                                name="startDate" 
+                                required
+                            >
+                            <small class="error-text"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date *</label>
+                            <input 
+                                type="date" 
+                                id="endDate" 
+                                name="endDate" 
+                                required
+                            >
+                            <small class="error-text"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="workingHours">Total Working Hours *</label>
+                            <input 
+                                type="number" 
+                                id="workingHours" 
+                                name="workingHours" 
+                                placeholder="e.g., 240"
+                                min="0"
+                                required
+                            >
+                            <small class="error-text"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="stipend">Stipend (if any) ₹</label>
+                            <input 
+                                type="number" 
+                                id="stipend" 
+                                name="stipend" 
+                                placeholder="e.g., 15000"
+                                min="0"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Supervisor & Project Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="supervisorName">Supervisor Name *</label>
+                        <input 
+                            type="text" 
+                            id="supervisorName" 
+                            name="supervisorName" 
+                            placeholder="Internship supervisor name"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="supervisorEmail">Supervisor Email *</label>
+                        <input 
+                            type="email" 
+                            id="supervisorEmail" 
+                            name="supervisorEmail" 
+                            placeholder="supervisor@company.com"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input 
+                            type="text" 
+                            id="projectTitle" 
+                            name="projectTitle" 
+                            placeholder="What was your main project?"
+                            required
+                        >
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">Project Description</label>
+                        <textarea 
+                            id="projectDescription" 
+                            name="projectDescription" 
+                            rows="4"
+                            placeholder="Describe what you worked on during your internship"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Performance & Skills</h3>
+                    
+                    <div class="form-group">
+                        <label for="performanceRating">Performance Rating *</label>
+                        <select id="performanceRating" name="performanceRating" required>
+                            <option value="">Select Rating</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Good">Good</option>
+                            <option value="Average">Average</option>
+                            <option value="Poor">Poor</option>
+                        </select>
+                        <small class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillsAcquired">Skills Acquired</label>
+                        <textarea 
+                            id="skillsAcquired" 
+                            name="skillsAcquired" 
+                            rows="3"
+                            placeholder="List technical and soft skills acquired (e.g., Python, Problem Solving)"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit Internship Details </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/validation.js"></script>
+    <script src="js/internship-details.js"></script>
+</body>
+</html>

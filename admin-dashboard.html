@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Internship Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">InternTrack - Admin</h2>
+            <div class="nav-right">
+                <span class="admin-name" id="adminName">Faculty/Admin</span>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="admin-wrapper">
+            
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Admin Dashboard</h1>
+                <p>Manage student records, internships, and problem reports</p>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <h3 id="totalStudents">0</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <div class="stat-content">
+                        <h3 id="totalInternships">0</h3>
+                        <p>Total Internships</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🐛</div>
+                    <div class="stat-content">
+                        <h3 id="totalProblems">0</h3>
+                        <p>Total Problems Reported</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-content">
+                        <h3 id="pendingProblems">0</h3>
+                        <p>Pending Issues</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="tabs-section">
+                <div class="tabs-header">
+                    <button class="tab-button active" data-tab="students">Student Records</button>
+                    <button class="tab-button" data-tab="internships">Internship Records</button>
+                    <button class="tab-button" data-tab="problems">Problem Reports</button>
+                </div>
+
+                <!-- STUDENTS TAB -->
+                <div id="students" class="tab-content active">
+                    <div class="search-bar">
+                        <input type="text" id="searchStudent" placeholder="Search by name, email, or student ID..." class="search-input">
+                        <select id="departmentFilter" class="filter-select">
+                            <option value="">All Departments</option>
+                            <option value="CSE">Computer Science</option>
+                            <option value="ECE">Electronics & Communication</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="CE">Civil Engineering</option>
+                            <option value="BIO">Biotechnology</option>
+                            <option value="IT">Information Technology</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table" id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Semester</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                            </tbody>
+                        </table>
+                        <div id="noStudentsMsg" class="no-data-message">
+                            No students registered yet.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTERNSHIPS TAB -->
+                <div id="internships" class="tab-content">
+                    <div class="search-bar">
+                        <input type="text" id="searchInternship" placeholder="Search by company name or student..." class="search-input">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table" id="internshipsTable">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Company Name</th>
+                                    <th>Internship Type</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Hours</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="internshipsTableBody">
+                            </tbody>
+                        </table>
+                        <div id="noInternshipsMsg" class="no-data-message">
+                            No internship records found.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROBLEMS TAB -->
+                <div id="problems" class="tab-content">
+                    <div class="search-bar">
+                        <input type="text" id="searchProblem" placeholder="Search by student name or problem title..." class="search-input">
+                        <select id="severityFilter" class="filter-select">
+                            <option value="">All Severity</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+
+                    <div class="problems-list" id="problemsList">
+                    </div>
+                    <div id="noProblemsMsg" class="no-data-message">
+                        No problem reports found.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL: Student Details -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeStudentModal()">&times;</span>
+            <h2>Student Details</h2>
+            <div id="studentModalBody" class="modal-body">
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Internship Details -->
+    <div id="internshipModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeInternshipModal()">&times;</span>
+            <h2>Internship Details</h2>
+            <div id="internshipModalBody" class="modal-body">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-success" id="approveBtn" onclick="approveInternship()">Approve</button>
+                <button class="btn-danger" id="rejectBtn" onclick="rejectInternship()">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Problem Details -->
+    <div id="problemModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProblemModal()">&times;</span>
+            <h2>Problem Report Details</h2>
+            <div id="problemModalBody" class="modal-body">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" id="resolveBtn" onclick="resolveProblem()">Mark as Resolved</button>
+                <button class="btn-secondary" id="contactBtn" onclick="contactStudent()">Contact Student</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/validation.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    
+    <script>
+        // Modal Functions
+        function closeStudentModal() {
+            document.getElementById('studentModal').classList.remove('show');
+        }
+
+        function closeInternshipModal() {
+            document.getElementById('internshipModal').classList.remove('show');
+        }
+
+        function closeProblemModal() {
+            document.getElementById('problemModal').classList.remove('show');
+        }
+
+        function approveInternship() {
+            alert('Internship approved!');
+            closeInternshipModal();
+        }
+
+        function rejectInternship() {
+            alert('Internship rejected!');
+            closeInternshipModal();
+        }
+
+        function resolveProblem() {
+            alert('Problem marked as resolved!');
+            closeProblemModal();
+        }
+
+        function contactStudent() {
+            alert('Student contact form opened!');
+            closeProblemModal();
+        }
+
+        // Tab Switching
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if(confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('isAdminLoggedIn');
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const studentModal = document.getElementById('studentModal');
+            const internshipModal = document.getElementById('internshipModal');
+            const problemModal = document.getElementById('problemModal');
+            
+            if(event.target === studentModal) {
+                studentModal.classList.remove('show');
+            }
+            if(event.target === internshipModal) {
+                internshipModal.classList.remove('show');
+            }
+            if(event.target === problemModal) {
+                problemModal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
