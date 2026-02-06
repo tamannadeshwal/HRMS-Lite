@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://lightweight-human-resource-management.vercel.app"
+    "https://lightweight-human-resource-manageme.vercel.app", // old (redirected)
+    "https://lightweight-human-resource-management.vercel.app" // new
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   
