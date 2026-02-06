@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hrms-lite-backend
+    env: node
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        value: file:./prod.db
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false
